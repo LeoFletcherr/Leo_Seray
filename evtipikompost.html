@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ev Tipi Bokashi Kompostu | Detaylı Bilgi</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Roboto:wght@300;400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'minister-green': '#1b4d3e',
+                        'earth-brown': '#3e2723',
+                        'paper-beige': '#f5f5dc',
+                        'accent-gold': '#ffb300',
+                    },
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Roboto', 'sans-serif'],
+                        'serif': ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { 
+            background-color: #f5f5dc;
+            color: #3e2723;
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+        }
+        .header-bg {
+            background: linear-gradient(to right, #1b4d3e, #0d2e24);
+            border-bottom: 4px solid #ffb300;
+        }
+    </style>
+</head>
+<body class="font-body antialiased">
+
+    <!-- ÜST BANT & GERİ DÖNÜŞ -->
+    <nav class="header-bg sticky top-0 z-50 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
+            <!-- Geri Dönüş Butonu -->
+            <a href="index.html" class="flex items-center gap-2 text-white hover:text-accent-gold transition font-bold uppercase tracking-wider text-sm bg-white/10 px-4 py-2 rounded-lg border border-white/20 hover:bg-white/20">
+                <i class="fa-solid fa-arrow-left"></i> Ana Sayfaya Dön
+            </a>
+            
+            <div class="flex items-center gap-3">
+                <!-- LOGO GÖRSELİ (Recycle ikonu yerine) -->
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center overflow-hidden border border-accent-gold shadow-sm">
+                    <img src="kplogo.png" alt="Kompost Logosu" class="w-full h-full object-contain p-1">
+                </div>
+                <span class="font-heading font-bold text-white text-lg hidden sm:block">Evimde Doğa Kompost</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- İÇERİK BAŞLIĞI & GÖRSEL -->
+    <header class="relative h-[60vh] min-h-[400px] flex items-end justify-center pb-12 text-center px-4 overflow-hidden bg-earth-brown">
+        <!-- Arkaplan Görseli (İstediğiniz Fotoğraf) -->
+        <div class="absolute inset-0 z-0">
+            <img src="bskfoto.jpg" 
+                 alt="Bokashi Kompostu Detay" 
+                 class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-t from-earth-brown via-transparent to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl">
+            <span class="bg-accent-gold text-earth-brown px-4 py-1 rounded text-xs font-bold uppercase tracking-widest shadow-lg mb-4 inline-block">
+                Ev Tipi Çözümler
+            </span>
+            <h1 class="font-serif text-5xl md:text-7xl font-bold text-white mb-4 leading-tight drop-shadow-2xl">
+                Bokashi Kompostu
+            </h1>
+            <p class="text-xl text-gray-200 font-light max-w-2xl mx-auto">
+                Şehirli evler için kokusuz, pratik ve hızlı bir fermantasyon yöntemi.
+            </p>
+        </div>
+    </header>
+
+    <!-- DETAYLI BİLGİ ALANI -->
+    <main class="max-w-5xl mx-auto px-4 py-16 -mt-20 relative z-20">
+        
+        <!-- Giriş Kartı -->
+        <div class="bg-white p-8 md:p-12 rounded-lg shadow-2xl border-t-8 border-minister-green mb-12">
+            <h2 class="font-heading text-3xl font-bold text-minister-green mb-6">Bokashi Nedir?</h2>
+            <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                Japonca'da "fermente edilmiş organik madde" anlamına gelen Bokashi, oksijensiz ortamda (anaerobik) yararlı mikroorganizmalar kullanılarak yapılan bir kompostlama yöntemidir. Geleneksel kompostun aksine, atıklar çürümez, <strong>turşu gibi fermente olur</strong>.
+            </p>
+            <div class="bg-paper-beige p-6 rounded border-l-4 border-accent-gold">
+                <p class="italic text-earth-brown font-medium">
+                    "Bokashi, küçük mutfaklar ve apartman daireleri için idealdir çünkü hava almayan kovalarda yapılır ve kötü koku yaymaz."
+                </p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+            <!-- Avantajlar -->
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <h3 class="font-heading text-xl font-bold text-earth-brown mb-6 flex items-center gap-3">
+                    <i class="fa-solid fa-star text-accent-gold"></i> Avantajları
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-minister-green mt-1"></i>
+                        <span class="text-gray-600">Et, süt, balık ve pişmiş yemek artıkları dahil neredeyse her şey kompostlanabilir.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-minister-green mt-1"></i>
+                        <span class="text-gray-600">Kötü koku ve sinek yapmaz (Hava almadığı sürece).</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-minister-green mt-1"></i>
+                        <span class="text-gray-600">Geleneksel yöntemden çok daha hızlıdır (2-4 hafta).</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-minister-green mt-1"></i>
+                        <span class="text-gray-600">Sıvı gübre (Bokashi çayı) da elde edilir.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Malzemeler -->
+            <div class="bg-minister-green text-white p-8 rounded-lg shadow-lg">
+                <h3 class="font-heading text-xl font-bold mb-6 flex items-center gap-3">
+                    <i class="fa-solid fa-tools text-accent-gold"></i> Gerekli Malzemeler
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3 border-b border-white/20 pb-2">
+                        <div class="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center font-bold">1</div>
+                        <span>Hava sızdırmayan kapaklı iki adet kova (İç içe geçebilen).</span>
+                    </li>
+                    <li class="flex items-center gap-3 border-b border-white/20 pb-2">
+                        <div class="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center font-bold">2</div>
+                        <span>Bokashi Kepeği (Veya laktoserum içeren aktif madde).</span>
+                    </li>
+                    <li class="flex items-center gap-3 border-b border-white/20 pb-2">
+                        <div class="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center font-bold">3</div>
+                        <span>Mutfak atıkları (Küçük parçalara ayrılmış).</span>
+                    </li>
+                    <li class="flex items-center gap-3 pb-2">
+                        <div class="bg-white/20 w-8 h-8 rounded-full flex items-center justify-center font-bold">4</div>
+                        <span>Sıkıştırma aparatı (Tabak veya özel kapak).</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Adım Adım Uygulama -->
+        <div class="bg-earth-brown text-paper-beige p-8 md:p-12 rounded-lg shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 opacity-5 pointer-events-none">
+                <i class="fa-solid fa-recycle text-[200px]"></i>
+            </div>
+            
+            <h2 class="font-heading text-3xl font-bold mb-8 text-center text-accent-gold">Nasıl Yapılır?</h2>
+            
+            <div class="grid md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 bg-white/5 rounded hover:bg-white/10 transition">
+                    <div class="text-4xl mb-4">🥬</div>
+                    <h4 class="font-bold mb-2">1. Hazırla</h4>
+                    <p class="text-sm opacity-80">Atıkları küçük parçalara böl ve kovanın dibine yerleştir.</p>
+                </div>
+                <div class="p-4 bg-white/5 rounded hover:bg-white/10 transition">
+                    <div class="text-4xl mb-4">🌾</div>
+                    <h4 class="font-bold mb-2">2. Serp</h4>
+                    <p class="text-sm opacity-80">Her katmanın üzerine bir avuç Bokashi kepeği serp.</p>
+                </div>
+                <div class="p-4 bg-white/5 rounded hover:bg-white/10 transition">
+                    <div class="text-4xl mb-4">💪</div>
+                    <h4 class="font-bold mb-2">3. Sıkıştır</h4>
+                    <p class="text-sm opacity-80">Havayı çıkarmak için iyice bastır ve kapağı sıkıca kapat.</p>
+                </div>
+                <div class="p-4 bg-white/5 rounded hover:bg-white/10 transition">
+                    <div class="text-4xl mb-4">⏳</div>
+                    <h4 class="font-bold mb-2">4. Bekle</h4>
+                    <p class="text-sm opacity-80">Kova dolunca 2 hafta kapalı beklet, sonra toprağa göm.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-minister-green text-center py-8 text-white/60 text-sm">
+        <p>&copy; 2025 Ulusal Kompost Platformu. Bilgilendirme Amaçlıdır.</p>
+    </footer>
+
+</body>
+</html>

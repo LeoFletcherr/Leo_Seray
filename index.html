@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ulusal Kompost Farkındalık Platformu</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Kurumsal ve Okunaklı -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Roboto:wght@300;400;500&family=Playfair+Display:wght@700&family=Baloo+2:wght@800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'minister-green': '#1b4d3e', /* Kurumsal Bakanlık Yeşili */
+                        'earth-brown': '#3e2723',    /* Koyu Toprak */
+                        'soil-light': '#5d4037',     /* Açık Toprak */
+                        'paper-beige': '#f5f5dc',    /* Resmi Kağıt Rengi */
+                        'accent-gold': '#ffb300',    /* Vurgu Rengi */
+                        'alert-red': '#c62828',
+                    },
+                    fontFamily: {
+                        'heading': ['Montserrat', 'sans-serif'],
+                        'body': ['Roboto', 'sans-serif'],
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'game': ['"Baloo 2"', 'cursive'],
+                    },
+                    boxShadow: {
+                        'card': '0 10px 30px -5px rgba(0, 0, 0, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { 
+            background-color: #3e2723;
+            color: #f5f5dc;
+            background-image: url('https://www.transparenttextures.com/patterns/black-lozenge.png'); /* Hafif doku */
+        }
+        
+        /* Kurumsal Header */
+        .official-header {
+            background: linear-gradient(to right, #1b4d3e, #0d2e24);
+            border-bottom: 4px solid #ffb300;
+        }
+
+        /* Overlay efekti */
+        .image-overlay {
+            background: linear-gradient(to bottom, rgba(27, 77, 62, 0.4), rgba(62, 39, 35, 0.9));
+        }
+
+        /* Bilgi Kartları */
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffb300;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Oyun Kapağı Efekti */
+        .game-cover-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 4px solid #8d6e63;
+        }
+        .play-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            transition: all 0.3s ease;
+        }
+        .game-cover-container:hover .play-overlay {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        .play-btn {
+            transition: transform 0.2s ease;
+        }
+        .game-cover-container:hover .play-btn {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="font-body antialiased relative">
+
+    <!-- KURUMSAL ÜST BANT (Resmiyet Hissi) -->
+    <div class="bg-earth-brown text-paper-beige text-xs py-2 px-4 border-b border-white/10 relative z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-flag text-red-500"></i> Ulusal Çevre Bilinci ve Sürdürülebilirlik İnisiyatifi</span>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-accent-gold transition">Kent Konseyi</a>
+                <span class="text-white/20">|</span>
+                <a href="#" class="hover:text-accent-gold transition">Tarım ve Orman Bakanlığı Bağlantılıdır</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+    <nav class="official-header sticky top-0 z-40 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <!-- LOGO ALANI -->
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 bg-paper-beige rounded-full flex items-center justify-center border-2 border-accent-gold shadow-lg overflow-hidden relative p-1">
+                        <!-- LOGO GÖRSELİ BURADA - Dosya adını kontrol edin -->
+                        <img src="kplogo.png" alt="Kompost Logosu" class="w-full h-full object-contain">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-heading font-bold text-xl md:text-2xl tracking-wide text-white">Evimdeki Doğa</span>
+                        <span class="text-[10px] md:text-xs text-accent-gold tracking-[0.2em] uppercase font-bold">Kompost</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu (DÜZENLENDİ: Kompost Bahçesi En Sağa Alındı) -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-bold tracking-wide text-gray-200">
+                    <a href="#about" class="hover:text-accent-gold transition uppercase py-2 border-b-2 border-transparent hover:border-accent-gold">Nedir?</a>
+                    <a href="#importance" class="hover:text-accent-gold transition uppercase py-2 border-b-2 border-transparent hover:border-accent-gold">Önemi</a>
+                    <a href="#contact" class="hover:text-accent-gold transition uppercase py-2 border-b-2 border-transparent hover:border-accent-gold">İletişim</a>
+                    <a href="#game-section" class="bg-accent-gold text-earth-brown px-5 py-2 rounded font-heading font-bold hover:bg-white hover:text-minister-green transition flex items-center gap-2 shadow-lg transform hover:scale-105">
+                        <i class="fa-solid fa-gamepad"></i> KOMPOST BAHÇESİ
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="md:hidden text-white text-2xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-minister-green border-t border-white/10">
+            <div class="flex flex-col p-4 space-y-4">
+                <a href="#about" class="block text-white font-bold border-b border-white/10 pb-2">Kompost Nedir?</a>
+                <a href="#importance" class="block text-white font-bold border-b border-white/10 pb-2">Önemi</a>
+                <a href="#contact" class="block text-white font-bold border-b border-white/10 pb-2">İletişim</a>
+                <a href="#game-section" class="block text-accent-gold font-bold bg-black/20 p-3 rounded text-center">KOMPOST BAHÇESİ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION: Gerçekçi ve Etkileyici -->
+    <section class="relative h-[85vh] flex items-center justify-center text-center px-4 overflow-hidden">
+        <!-- Arkaplan Görseli (Gerçek Fotoğraf - Toprak) -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1920&auto=format&fit=crop" 
+                 alt="Bahçede bitki yetiştirme" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 image-overlay"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto border-t-4 border-b-4 border-accent-gold/50 py-12 px-6 bg-black/20 backdrop-blur-sm">
+            <div class="mb-4 flex justify-center">
+                <span class="bg-minister-green text-white px-4 py-1 rounded text-xs font-bold uppercase tracking-wider shadow-lg">Sürdürülebilir Yaşam Projesi</span>
+            </div>
+            <h1 class="font-serif text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-xl">
+                Mitleri Çürüt,  <br> <span class="text-accent-gold italic">Toprağı Dönüştür.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light max-w-3xl mx-auto leading-relaxed">
+                Evsel atıklarınızı çöpe değil, doğaya kazandırın. Şehir hayatında karbon ayak izinizi azaltın, toprağı zenginleştirin. Doğaseverler topluluğuna bugün katılın.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#about" class="px-8 py-4 border border-white/50 text-white font-heading font-bold hover:bg-white hover:text-minister-green transition uppercase text-sm tracking-wider">
+                    Daha Fazla Bilgi
+                </a>
+                <a href="#game-section" class="px-8 py-4 bg-minister-green text-white font-heading font-bold hover:bg-accent-gold hover:text-earth-brown transition uppercase text-sm tracking-wider shadow-lg flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-leaf"></i> Projeyi Keşfet
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BİLGİLENDİRME: Kompost Nedir? (Resmi ve Eğitici) -->
+    <section id="about" class="py-24 px-4 relative z-10 bg-[#f5f5dc] text-earth-brown">
+        <!-- Dekoratif Yaprak -->
+        <div class="absolute top-0 right-0 opacity-10 pointer-events-none">
+            <i class="fa-solid fa-leaf text-[300px] text-minister-green transform rotate-45 translate-x-1/3 -translate-y-1/3"></i>
+        </div>
+
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-minister-green font-bold tracking-widest text-sm uppercase block mb-2">Eğitim Köşesi</span>
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold text-earth-brown mb-8 leading-tight">
+                        Kompost Nedir? <br>
+                        <span class="text-lg font-light text-gray-600 block mt-2">Doğanın Geri Dönüşüm Mucizesi</span>
+                    </h2>
+                    
+                    <p class="text-lg leading-relaxed mb-6 text-gray-700 text-justify">
+                        Kompost, organik atıkların (sebze-meyve kabukları, dökülen yapraklar, dal parçaları vb.) oksijenli ortamda ayrışarak biyolojik olarak parçalanması ve <strong>humuslu toprağa</strong> dönüşmesi sürecidir.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-8 text-minister-green font-semibold">
+                        Bu bir "çöp" değil, toprağın en doğal vitaminidir.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-minister-green rounded-full flex items-center justify-center text-white flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-carrot text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Yeşil Atıklar (Azot)</h4>
+                                <p class="text-sm text-gray-600">Sebze, meyve kabukları, çay posası, taze çim.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-earth-brown rounded-full flex items-center justify-center text-white flex-shrink-0 mt-1">
+                                <i class="fa-brands fa-pagelines text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Kahverengi Atıklar (Karbon)</h4>
+                                <p class="text-sm text-gray-600">Kuru yapraklar, dal parçaları, karton, talaş.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative group">
+                    <div class="absolute -inset-4 border-2 border-minister-green opacity-30 transform group-hover:rotate-2 transition duration-500"></div>
+                    <img src="wtscompost.jpg" 
+                         alt="Kompost Oluşumu" 
+                         class="w-full h-auto shadow-2xl relative z-10 rounded grayscale-[20%] group-hover:grayscale-0 transition duration-700">
+                    <div class="absolute bottom-4 left-4 z-20 bg-white/90 px-4 py-2 text-xs font-bold text-earth-brown shadow-lg">
+                        GÖRSEL 1.1: Organik Ayrışma Süreci
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAYDALAR & İSTATİSTİKLER (Resmi Veriler) -->
+    <section id="importance" class="py-24 px-4 relative z-10 bg-fixed bg-cover bg-center border-t border-b border-accent-gold" style="background-image: url('https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+        <div class="absolute inset-0 bg-minister-green/90"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-4xl font-bold mb-4 text-white">Neden Kompost Yapmalıyız?</h2>
+                <div class="w-24 h-1 bg-accent-gold mx-auto mb-6"></div>
+                <p class="text-gray-200 text-lg font-light max-w-3xl mx-auto">
+                    Ulusal atık yönetimi politikaları çerçevesinde, bireysel kompost uygulamaları ekolojik dengenin korunmasında kritik rol oynamaktadır.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Kart 1 -->
+                <div class="info-card p-8 text-center rounded-lg">
+                    <div class="inline-block p-4 border-2 border-accent-gold rounded-full mb-6">
+                        <i class="fa-solid fa-trash-can-arrow-up text-4xl text-accent-gold"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3 text-white">Atık Yönetimi</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed font-light">
+                        Evsel atıkların <strong>%60'ı organiktir</strong>. Kompost yaparak çöp sahalarına giden atık miktarını yarı yarıya azaltabilir, belediyelerin atık yükünü hafifletebilirsiniz.
+                    </p>
+                </div>
+                <!-- Kart 2 -->
+                <div class="info-card p-8 text-center rounded-lg">
+                    <div class="inline-block p-4 border-2 border-blue-400 rounded-full mb-6">
+                        <i class="fa-solid fa-droplet text-4xl text-blue-400"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3 text-white">Su Tasarrufu</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed font-light">
+                        Kompost, toprağın su tutma kapasitesini artırır. Böylece bahçe ve park sulamasında <strong>%30'a varan</strong> su tasarrufu sağlanır ve erozyon önlenir.
+                    </p>
+                </div>
+                <!-- Kart 3 -->
+                <div class="info-card p-8 text-center rounded-lg">
+                    <div class="inline-block p-4 border-2 border-red-400 rounded-full mb-6">
+                        <i class="fa-solid fa-temperature-three-quarters text-4xl text-red-400"></i>
+                    </div>
+                    <h3 class="font-heading text-xl font-bold mb-3 text-white">İklim Mücadelesi</h3>
+                    <p class="text-sm text-gray-300 leading-relaxed font-light">
+                        Çöplüklerde havasız ortamda çürüyen organik atıklar zararlı <strong>metan gazı</strong> yayar. Evde kompostlama bu emisyonu sıfıra indirir.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OYUN ALANI (KOMPOST BAHÇESİ) -->
+    <section id="game-section" class="py-24 px-4 relative z-10 bg-earth-brown text-paper-beige">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-white/20 pb-6">
+                <div>
+                    <span class="bg-accent-gold text-earth-brown px-3 py-1 text-xs font-bold uppercase tracking-wider rounded">İnteraktif Farkındalık Oyunu</span>
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold mt-4 text-white">KOMPOST BAHÇESİ</h2>
+                    <p class="text-gray-400 mt-2 max-w-lg">Sanal bahçenizde atıkları yönetin, doğayı canlandırın. Çok yakında yayında.</p>
+                </div>
+                <div class="mt-6 md:mt-0">
+                    <span class="text-xs text-gray-400 uppercase tracking-widest block text-right mb-1">Geliştirici Ekip</span>
+                    <div class="text-white font-bold text-right">Leo Kayra Fletcher & Seray Çalışkan</div>
+                </div>
+            </div>
+
+            <!-- OYUN KAPAĞI VE BUTON (ÇALIŞMAYAN) -->
+            <div class="game-cover-container bg-black aspect-video max-w-4xl mx-auto shadow-2xl relative group cursor-not-allowed">
+                
+                <!-- Kapak Görseli (User Uploaded) -->
+                <img src="gamess.jpg" 
+                     alt="Kompost Bahçesi Oyun Kapağı" 
+                     class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700 ease-in-out">
+                
+                <!-- Overlay ve Play Butonu -->
+                <div class="play-overlay absolute inset-0 flex flex-col items-center justify-center z-20">
+                    <!-- Play butonu (Tıklanmaz, sadece görsel) -->
+                    <div class="play-btn w-24 h-24 bg-accent-gold rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(255,179,0,0.6)] border-4 border-white mb-6">
+                        <i class="fa-solid fa-play text-4xl text-earth-brown ml-2"></i>
+                    </div>
+                    <div class="bg-black/80 px-6 py-3 rounded text-white font-bold tracking-widest uppercase border border-white/20">
+                        <i class="fa-solid fa-wrench text-accent-gold mr-2"></i> Yapım Aşamasında
+                    </div>
+                    <p class="text-gray-300 text-sm mt-4 max-w-md text-center px-4">
+                        Bu simülasyon, atık ayrıştırma bilincini artırmak amacıyla Kent Konseyi işbirliği ile geliştirilmektedir.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-center text-sm text-gray-400">
+                <div class="bg-white/5 p-4 rounded border border-white/10">
+                    <i class="fa-solid fa-list-check text-2xl text-minister-green mb-2 block"></i>
+                    Atıkları Doğru Ayrıştır
+                </div>
+                <div class="bg-white/5 p-4 rounded border border-white/10">
+                    <i class="fa-solid fa-temperature-high text-2xl text-accent-gold mb-2 block"></i>
+                    Isı ve Nem Dengesini Koru
+                </div>
+                <div class="bg-white/5 p-4 rounded border border-white/10">
+                    <i class="fa-solid fa-award text-2xl text-blue-400 mb-2 block"></i>
+                    Sertifikalı Çiftçi Ol
+                </div>
+            </div>
+
+            <!-- GELİŞTİRİCİ EKİP BÖLÜMÜ -->
+            <div class="mt-16 pt-8 border-t border-white/10">
+                <h3 class="text-center font-heading text-2xl text-accent-gold mb-8 uppercase tracking-widest">Geliştirici Ekip</h3>
+                <div class="flex flex-col md:flex-row justify-center gap-8 md:gap-16">
+                    <!-- Takım Üyesi 1 -->
+                    <div class="text-center group">
+                        <div class="w-24 h-24 mx-auto bg-minister-green rounded-full flex items-center justify-center text-white text-3xl font-heading mb-4 border-2 border-accent-gold shadow-lg group-hover:scale-110 transition duration-300">
+                            L
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-1">Leo Kayra Fletcher</h4>
+                        <p class="text-accent-gold text-sm font-bold uppercase tracking-wider mb-2">Geliştirici</p>
+                        <p class="text-gray-400 text-xs max-w-[200px] mx-auto leading-relaxed">
+                            Yeni Medya ve İletişim Öğrencisi <br> Üniversite
+                        </p>
+                    </div>
+
+                    <!-- Takım Üyesi 2 -->
+                    <div class="text-center group">
+                        <div class="w-24 h-24 mx-auto bg-minister-green rounded-full flex items-center justify-center text-white text-3xl font-heading mb-4 border-2 border-accent-gold shadow-lg group-hover:scale-110 transition duration-300">
+                            S
+                        </div>
+                        <h4 class="text-white font-bold text-lg mb-1">Seray Çalışkan</h4>
+                        <p class="text-accent-gold text-sm font-bold uppercase tracking-wider mb-2">Tasarımcı</p>
+                        <p class="text-gray-400 text-xs max-w-[200px] mx-auto leading-relaxed">
+                            Yeni Medya ve İletişim Öğrencisi <br> Üniversite
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+<!-- GALERİ (Gerçek Uygulamalar) -->
+    <section class="py-24 px-4 bg-[#f5f5dc] text-earth-brown border-b border-earth-brown">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-heading text-3xl font-bold text-minister-green mb-12 text-center uppercase tracking-wider">
+                <span class="border-b-4 border-accent-gold pb-2">Uygulama Örnekleri</span>
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Kart 1: Ev Tipi (Link Eklendi) -->
+                <a href="evtipikompost.html" class="relative group overflow-hidden rounded-lg shadow-2xl cursor-pointer block">
+                    <img src="bskfoto.jpg" alt="Ev Tipi Kompost" class="w-full h-80 object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <span class="text-accent-gold text-xs font-bold uppercase tracking-widest mb-1 block">Bireysel</span>
+                        <h3 class="font-heading text-xl font-bold">Ev Tipi Bokashi</h3>
+                        <span class="text-xs text-accent-gold mt-2 inline-block opacity-0 group-hover:opacity-100 transition transform translate-y-2 group-hover:translate-y-0">Detayları Gör &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Kart 2: Bahçe (Link Eklendi) -->
+                <a href="sogukkompost.html" class="relative group overflow-hidden rounded-lg shadow-2xl cursor-pointer block">
+                    <img src="coldcompost.jpg" alt="Bahçe Kompostu" class="w-full h-80 object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <span class="text-accent-gold text-xs font-bold uppercase tracking-widest mb-1 block">Bahçe</span>
+                        <h3 class="font-heading text-xl font-bold">Soğuk Kompost</h3>
+                        <span class="text-xs text-accent-gold mt-2 inline-block opacity-0 group-hover:opacity-100 transition transform translate-y-2 group-hover:translate-y-0">Detayları Gör &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Kart 3: Endüstriyel (Link Eklendi) -->
+                <a href="kentyonetim.html" class="relative group overflow-hidden rounded-lg shadow-2xl cursor-pointer block">
+                    <img src="statecompost.jpeg" alt="Belediye Kompost Tesisi" class="w-full h-80 object-cover transform group-hover:scale-110 transition duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <span class="text-accent-gold text-xs font-bold uppercase tracking-widest mb-1 block">Endüstriyel</span>
+                        <h3 class="font-heading text-xl font-bold">Kent Yönetimi</h3>
+                        <span class="text-xs text-accent-gold mt-2 inline-block opacity-0 group-hover:opacity-100 transition transform translate-y-2 group-hover:translate-y-0">Detayları Gör &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- KOMPOST AİLESİ (YENİ EKLENEN KISIM: SOSYAL DUVAR) -->
+    <section class="py-24 px-4 bg-white relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-minister-green font-bold tracking-widest text-sm uppercase block mb-2">SİZDEN GELENLER</span>
+                <h2 class="font-heading text-4xl font-bold text-earth-brown">Kompost Ailesi</h2>
+                <div class="w-24 h-1 bg-accent-gold mx-auto mt-4 mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Siz de çalışmalarınızı <strong>#KompostBahçesi</strong> etiketiyle paylaşın, büyüyen yeşil ailemizin bir parçası olun.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Post 1 -->
+                <div class="relative group overflow-hidden rounded-xl shadow-lg aspect-[4/5] cursor-pointer bg-gray-100">
+                    <img src="post1.jpg" 
+                         alt="Kullanıcı Paylaşımı 1" 
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <p class="text-white text-sm font-bold truncate">İlk hasatım! 🌱</p>
+                        <span class="text-accent-gold text-xs">@dogasever_ali</span>
+                    </div>
+                    <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-md p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition duration-300">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+
+                <!-- Post 2 -->
+                <div class="relative group overflow-hidden rounded-xl shadow-lg aspect-[4/5] cursor-pointer bg-gray-100">
+                    <img src="post2.webp" 
+                         alt="Kullanıcı Paylaşımı 2" 
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <p class="text-white text-sm font-bold truncate">Toprak kokusu... 🍂</p>
+                        <span class="text-accent-gold text-xs">@yesil_yasam</span>
+                    </div>
+                    <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-md p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition duration-300">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+
+                <!-- Post 3 -->
+                <div class="relative group overflow-hidden rounded-xl shadow-lg aspect-[4/5] cursor-pointer bg-gray-100">
+                    <img src="post3.jpg" 
+                         alt="Kullanıcı Paylaşımı 3" 
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <p class="text-white text-sm font-bold truncate">Atık değil kaynak! ♻️</p>
+                        <span class="text-accent-gold text-xs">@sifiratik_proje</span>
+                    </div>
+                    <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-md p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition duration-300">
+                        <i class="fa-brands fa-twitter"></i>
+                    </div>
+                </div>
+
+                <!-- Post 4 -->
+                <div class="relative group overflow-hidden rounded-xl shadow-lg aspect-[4/5] cursor-pointer bg-gray-100">
+                    <img src="post4.webp" 
+                         alt="Kullanıcı Paylaşımı 4" 
+                         class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <p class="text-white text-sm font-bold truncate">Bu oyun harika!</p>
+                        <span class="text-accent-gold text-xs">@oyunsever_kiz</span>
+                    </div>
+                    <div class="absolute top-3 right-3 bg-white/20 backdrop-blur-md p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition duration-300">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- İLETİŞİM & PARTNERLER (Full Genişlik ve Alt Kısım Düzeltmesi) -->
+    <div class="mt-auto w-full">
+        <section id="contact" class="py-20 bg-minister-green text-white relative z-10 w-full">
+            <!-- Arkaplan dokusu -->
+            <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#D4AF37 1px, transparent 1px); background-size: 20px 20px;"></div>
+            
+            <div class="max-w-4xl mx-auto text-center relative z-20 px-4">
+                <div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl text-accent-gold">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <h2 class="font-heading text-3xl font-bold mb-4">Görüş ve Önerileriniz</h2>
+                <p class="text-gray-300 mb-8 max-w-xl mx-auto">
+                    Proje hakkında detaylı bilgi almak, işbirliği yapmak veya mahallenizde kompost eğitimi talep etmek için bize ulaşın.
+                </p>
+                
+                <div class="flex flex-col md:flex-row justify-center gap-4 mb-12">
+                    <a href="mailto:info@kompostprojesi.gov.tr" class="bg-white text-minister-green px-8 py-4 rounded font-bold hover:bg-accent-gold hover:text-earth-brown transition shadow-lg">
+                        E-Posta Gönder
+                    </a>
+                    <a href="#" class="border border-white/30 px-8 py-4 rounded font-bold hover:bg-white/10 transition">
+                        Kent Konseyi Sayfası
+                    </a>
+                </div>
+
+                <div class="border-t border-white/10 pt-8 mt-12 pb-4">
+                    <p class="text-xs font-bold text-accent-gold mb-6 uppercase tracking-widest">ÇÖZÜM ORTAKLARI</p>
+                    <div class="flex justify-center items-center gap-8">
+                         <!-- Partner Görseli 1 -->
+                         <div class="bg-white p-2 rounded-lg opacity-80 hover:opacity-100 transition">
+                            <img src="kentkonsey.png" alt="İzmir Kent Konseyi" class="h-12 w-auto object-contain">
+                         </div>
+                         <!-- Partner Görseli 2 -->
+                         <div class="bg-white p-2 rounded-lg opacity-80 hover:opacity-100 transition">
+                            <img src="yasar.png" alt="Yaşar Üniversitesi" class="h-12 w-auto object-contain">
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER (Yapışık) -->
+        <footer class="bg-[#2e1c19] text-gray-400 py-12 px-4 text-xs w-full">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="text-white font-bold text-lg mb-4">KOMPOST PLATFORMU</h4>
+                    <p class="leading-relaxed max-w-sm">
+                        Bu proje, sürdürülebilir şehir yaşamını desteklemek ve atık yönetiminde bireysel farkındalığı artırmak amacıyla geliştirilmiştir. Tüm içerikler bilgilendirme amaçlıdır.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Hızlı Erişim</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-accent-gold">Mevzuat</a></li>
+                        <li><a href="#" class="hover:text-accent-gold">Eğitim Materyalleri</a></li>
+                        <li><a href="#" class="hover:text-accent-gold">Sıkça Sorulan Sorular</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Sosyal Medya</h4>
+                    <div class="flex gap-4 text-lg">
+                        <a href="#" class="hover:text-accent-gold"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="hover:text-accent-gold"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-accent-gold"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center border-t border-white/5 pt-8">
+                <p>&copy; 2025 Leo Kayra Fletcher & Seray Çalışkan. Tüm Hakları Saklıdır.</p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
